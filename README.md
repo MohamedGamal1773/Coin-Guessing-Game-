@@ -1,4 +1,4 @@
-# Coin-Guessing-Game-
+# Coin-Guessing-Game
 This is a simple command-line game where the user tries to guess the outcome of a virtual coin toss. The coin can be tossed using one of two randomization methods:
 Method 1: random.random() (Generates a floating-point number and determines heads or tails based on its value)
 Method 2: random.randint(0,1) (Generates either 0 or 1 to represent heads or tails)
@@ -8,37 +8,34 @@ Features:
 ✅ Make a guess between "Heads" or "Tails"
 ✅ Instant feedback on whether you won or lost
 import random
+
 print("""
-Welcome to the coin Guessing game
-Choose a method to toss the coin
-1.Using random.random()
-2.Using random.randint()
+Welcome to the Coin Guessing Game!  
+Choose a method to toss the coin:  
+1. Using random.random()  
+2. Using random.randint()  
 """)
-choice = input("Enter your Choice (1) or (2):\n")
-if choice == "1" or choice == "2":
+
+choice = input("Enter your choice (1) or (2):\n")
+
+if choice in ("1", "2"):
     if choice == "1":
-        computer_result1 = random.random()
-        if computer_result1 >= 0.5:
-            computer_result = "Heads"
-        else:
-            computer_result = "Tails"
+        computer_result = "Heads" if random.random() >= 0.5 else "Tails"
     else:
-        computer_result2 = random.randint(0,1)
-        if computer_result2 == 0:
-            computer_result = "Heads"
+        computer_result = "Heads" if random.randint(0, 1) == 0 else "Tails"
+
+    user_input = input("Enter your guess (Heads or Tails):\n").strip().capitalize()
+
+    if user_input in ("Heads", "Tails"):
+        if user_input == computer_result:
+            print("🎉 Congratulations! You WON!")
         else:
-            computer_result = "Tails"
-    user_input = input ("Enter your Guess (Heads) or (Tails)\n")
-    if user_input.lower() == "heads" or user_input.lower()== "tails":
-        if user_input.lower() == computer_result.lower():
-            print("Congratulations! You WON!")
-        else:
-            print("Sorry, You lost!")
-            print(f"The Computer`s coin toss result was:\n{computer_result}")
+            print(f"❌ Sorry, you lost! The computer's coin toss result was: {computer_result}")
     else:
-        print("Invalid Choice please select (Heads) or (Tails) ")
+        print("⚠ Invalid choice! Please enter 'Heads' or 'Tails'.")
 else:
-    print("Invalid choice Please Enter your Choice (1) or (2) ")
+    print("⚠ Invalid choice! Please enter '1' or '2'.")
+      
     
 Example Run
 
